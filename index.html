@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillSwap - Exchange Your Skills</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Toastify CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+<!-- Optionally, keep your custom styles.css after Bootstrap -->
+<link rel="stylesheet" href="css/styles.css" />
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">SkillSwap</a>
+                <ul class="nav-links">
+                    <li><a href="#" id="nav-home">Home</a></li>
+                    <li><a href="#" id="nav-browse">Browse Skills</a></li>
+                    <li><a href="#" id="nav-how-it-works">How It Works</a></li>
+                </ul>
+                <div class="auth-buttons" id="auth-buttons">
+                    <button class="btn btn-outline" id="login-btn">Log In</button>
+                    <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+                </div>
+                <div class="user-menu hidden" id="user-menu">
+                    <span id="user-greeting">Hello, User!</span>
+                    <button class="btn btn-outline ml-1" id="dashboard-btn">Dashboard</button>
+                    <button class="btn btn-outline ml-1" id="logout-btn">Log Out</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- Home Page -->
+        <section id="home-page">
+            <div class="hero">
+                <div class="container">
+                    <h1>Exchange Skills, Grow Together</h1>
+                    <p>SkillSwap connects people who want to learn new skills by exchanging their own expertise. No money needed - just your knowledge and willingness to teach.</p>
+                    <button class="btn btn-primary" id="get-started-btn">Get Started</button>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Popular Skills</h2>
+                        <p>Discover skills people are looking to exchange right now</p>
+                    </div>
+                    <div class="skills-grid" id="featured-skills">
+                        <!-- Featured skills will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browse Skills Page -->
+        <section id="browse-page" class="hidden">
+            <div class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Browse All Skills</h2>
+                        <p>Find someone to exchange skills with</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="skill-search" placeholder="Search for skills...">
+                    </div>
+                    <div class="skills-grid" id="all-skills">
+                        <!-- All skills will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Page -->
+        <section id="how-it-works-page" class="hidden">
+            <div class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>How SkillSwap Works</h2>
+                        <p>Simple steps to start exchanging skills</p>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-card-header"><h3>1. Create Your Profile</h3></div>
+                            <div class="skill-card-body"><p>Sign up and list the skills you have to offer and the skills you want to learn.</p></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-card-header"><h3>2. Find a Match</h3></div>
+                            <div class="skill-card-body"><p>Browse through skills or use our search to find someone with complementary skills.</p></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-card-header"><h3>3. Send a Swap Request</h3></div>
+                            <div class="skill-card-body"><p>Connect with other users and propose a skill exchange.</p></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-card-header"><h3>4. Learn & Teach</h3></div>
+                            <div class="skill-card-body"><p>Schedule sessions and start exchanging knowledge with your skill partner.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Page -->
+        <section id="login-page" class="hidden">
+            <div class="section">
+                <div class="container">
+                    <div class="form-container">
+                        <h2 class="text-center">Log In to SkillSwap</h2>
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="login-email">Email</label>
+                                <input type="email" class="form-control" id="login-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <input type="password" class="form-control" id="login-password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                        </form>
+                        <p class="text-center mt-1">Don't have an account? <a href="#" id="go-to-signup">Sign up here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signup Page -->
+        <section id="signup-page" class="hidden">
+            <div class="section">
+                <div class="container">
+                    <div class="form-container">
+                        <h2 class="text-center">Join SkillSwap</h2>
+                        <form id="signup-form">
+                            <div class="form-group">
+                                <label for="signup-name">Full Name</label>
+                                <input type="text" class="form-control" id="signup-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-email">Email</label>
+                                <input type="email" class="form-control" id="signup-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-password">Password</label>
+                                <input type="password" class="form-control" id="signup-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-location">Location</label>
+                                <input type="text" class="form-control" id="signup-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-bio">Bio</label>
+                                <textarea class="form-control" id="signup-bio" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                        </form>
+                        <p class="text-center mt-1">Already have an account? <a href="#" id="go-to-login">Log in here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Dashboard Page -->
+        <section id="dashboard-page" class="hidden">
+            <div class="section">
+                <div class="container">
+                    <h1 class="section-title">Your Dashboard</h1>
+                    <div class="dashboard">
+                        <div class="sidebar">
+                            <ul class="sidebar-menu">
+                                <li><a href="#" class="active" data-tab="profile">My Profile</a></li>
+                                <li><a href="#" data-tab="my-skills">My Skills</a></li>
+                                <li><a href="#" data-tab="swap-requests">Swap Requests</a></li>
+                                <li><a href="#" data-tab="messages">Messages</a></li>
+                            </ul>
+                        </div>
+                        <div class="dashboard-content">
+                            <!-- Profile Tab -->
+                            <div id="profile-tab" class="tab-content">
+                                <h2>My Profile</h2>
+                                <div class="form-container">
+                                    <form id="profile-form">
+                                        <div class="form-group">
+                                            <label for="profile-name">Full Name</label>
+                                            <input type="text" class="form-control" id="profile-name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="profile-email">Email</label>
+                                            <input type="email" class="form-control" id="profile-email" required readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="profile-location">Location</label>
+                                            <input type="text" class="form-control" id="profile-location" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="profile-bio">Bio</label>
+                                            <textarea class="form-control" id="profile-bio" rows="3"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- My Skills Tab -->
+                            <div id="my-skills-tab" class="tab-content hidden">
+                                <h2>My Skills</h2>
+                                <div class="mb-2">
+                                    <button class="btn btn-primary" id="add-skill-btn">Add New Skill</button>
+                                </div>
+                                <div id="user-skills-list">
+                                    <!-- User's skills will be loaded here -->
+                                </div>
+                            </div>
+                            <!-- Swap Requests Tab -->
+                            <div id="swap-requests-tab" class="tab-content hidden">
+                                <h2>Swap Requests</h2>
+                                <div id="swap-requests-list">
+                                    <!-- Swap requests will be loaded here -->
+                                </div>
+                            </div>
+                            <!-- Messages Tab -->
+                            <div id="messages-tab" class="tab-content hidden">
+                                <h2>Messages</h2>
+                                <div class="messages-container">
+                                    <div class="conversations-list" id="conversations-list">
+                                        <!-- Conversations will be loaded here -->
+                                    </div>
+                                    <div class="chat-area">
+                                        <div class="chat-header" id="chat-header">
+                                            <p>Select a conversation to start messaging</p>
+                                        </div>
+                                        <div class="chat-messages" id="chat-messages">
+                                            <!-- Messages will be loaded here -->
+                                        </div>
+                                        <div class="chat-input hidden" id="chat-input">
+                                            <input type="text" id="message-input" placeholder="Type your message...">
+                                            <button class="btn btn-primary" id="send-message-btn">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+   <!-- Add Skill Modal -->
+<div id="add-skill-modal" class="modal hidden">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+      <button class="modal-close" id="close-skill-modal">&times;</button>
+      <h2 class="modal-title">Add a Skill</h2>
+      <form id="add-skill-form">
+          <div class="form-group">
+              <label for="skill-name">Skill Name</label>
+              <input type="text" class="form-control" id="skill-name" required>
+          </div>
+          <div class="form-group">
+              <label for="skill-category">Category</label>
+              <select class="form-control" id="skill-category" required>
+                  <option value="">Select a category</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Languages">Languages</option>
+                  <option value="Arts & Crafts">Arts & Crafts</option>
+                  <option value="Music">Music</option>
+                  <option value="Cooking">Cooking</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Business">Business</option>
+                  <option value="Other">Other</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="skill-description">Description</label>
+              <textarea class="form-control" id="skill-description" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="skill-level">Your Skill Level</label>
+              <select class="form-control" id="skill-level" required>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                  <option value="Expert">Expert</option>
+              </select>
+          </div>
+          <div class="form-group flex-row">
+              <label class="flex-row-label" for="skill-teach">
+                  <input type="checkbox" id="skill-teach" checked>
+                  I want to teach this skill
+              </label>
+          </div>
+          <div class="form-group flex-row">
+              <label class="flex-row-label" for="skill-learn">
+                  <input type="checkbox" id="skill-learn">
+                  I want to learn this skill
+              </label>
+          </div>
+          <div class="form-actions modal-actions">
+              <button type="button" class="btn btn-outline" id="cancel-skill-btn">Cancel</button>
+              <button type="submit" class="btn btn-primary">Add Skill</button>
+          </div>
+      </form>
+  </div>
+</div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/db.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/skills.js"></script>
+    <script src="js/swapRequests.js"></script>
+    <script src="js/messages.js"></script>
+    <script src="js/appState.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Bootstrap 5 JS Bundle (for modals/alerts if you use them) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Toastify JS -->
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</body>
+</html>

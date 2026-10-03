@@ -1,0 +1,4 @@
+- [x] Modify showPage in js/appState.js to prevent navigation to dashboard if user is not logged in, redirect to login instead.
+- [x] Add event listener for get-started-btn to navigate to signup page.
+- [x] Update init in js/appState.js to set initial page to 'login' if no currentUser.
+- [x] Add checks in setupEventListeners for nav links to redirect to login if not authenticated.
